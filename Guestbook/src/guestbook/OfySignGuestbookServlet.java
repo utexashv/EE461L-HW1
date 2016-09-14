@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class OfySignGuestbookServlet extends HttpServlet {
-	
 	static {
         ObjectifyService.register(Greeting.class);
     }
@@ -35,7 +34,6 @@ public class OfySignGuestbookServlet extends HttpServlet {
         ObjectifyService.ofy().save().entity(gt).now();
         
         resp.sendRedirect("/ofyguestbook.jsp?guestbookName=" + guestbookName);
-
     }
 
 }

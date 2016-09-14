@@ -2,15 +2,14 @@ package guestbook;
 
 import java.util.Date;
 import com.google.appengine.api.users.User;
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.*;
 
 @Entity
 public class Greeting implements Comparable<Greeting> {
     @Id Long id;
     User user;
     String content;
-    Date date;
+    @Index public Date date;
     
     private Greeting() {}
 
