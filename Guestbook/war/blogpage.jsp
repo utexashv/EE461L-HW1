@@ -28,7 +28,7 @@
 	    User user = userService.getCurrentUser();  
 		%>	
 		    
-	    <p>Welcome to the Blog Page!</p>
+	    <h1>Welcome to the Blog Page!</h1>
 	    
 		<%
 	    if (user != null) {
@@ -64,13 +64,19 @@
 			          }
 			       	}
 			  		pageContext.setAttribute("greeting_user", author);
+			  		pageContext.setAttribute("greeting_date", greeting.date);
 			%>
-				<p><b>${fn:escapeXml(greeting_user)}</b> wrote:</p>
-			   	<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
+				<p>
+					<b>${fn:escapeXml(greeting_date)}</b><br/>
+					<b>${fn:escapeXml(greeting_user)}</b> wrote:
+		   			<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
+	   			</p>
+	   			<br/>
 			<%
 			        }
 			}
 			%>
+				<p><a href="listblog.jsp">List of all blogs</a>
 		<%
 		} else {
 		%>
@@ -80,10 +86,7 @@
 		<%
 		}
 		%>
-		<form action="/blogpage.jsp" method="get">
-			<div><input type="text" name="guestbookName" value="${fn:escapeXml(guestbookName)}" /></div>
-			<div><input type="submit" value="Switch Blog" /></div>
-		</form>
+		
 	</body>
 </html>
 

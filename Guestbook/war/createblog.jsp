@@ -24,7 +24,7 @@
 	    UserService userService = UserServiceFactory.getUserService();
 	    User user = userService.getCurrentUser();  
 		%>	
-		<p>You can create blogs here</p>
+		<p>You can write your own blog here:</p>
 		<br/>
 		<form action="/blog" method="post">
 	    	<div><textarea name="content" rows="3" cols="60"></textarea></div>
