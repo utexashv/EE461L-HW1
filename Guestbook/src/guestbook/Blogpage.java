@@ -30,11 +30,12 @@ public class Blogpage extends HttpServlet {
         
         // objectify
         String guestbookName = req.getParameter("guestbookName");
+        String title = req.getParameter("title");
         String content = req.getParameter("content");
         if(user != null){
-        	greeting = new Greeting(guestbookName, content, user.getUserId(), user.getEmail());
+        	greeting = new Greeting(guestbookName, title, content, user.getUserId(), user.getEmail());
         } else {
-        	greeting = new Greeting(guestbookName, content);
+        	greeting = new Greeting(guestbookName, title, content);
         }
         
         ObjectifyService.ofy().save().entity(greeting).now();

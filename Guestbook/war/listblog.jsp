@@ -37,11 +37,11 @@
 
 	if (greetings.isEmpty()) {
 	%>
-		<h3>Blog '${fn:escapeXml(guestbookName)}' has no messages.</h3>
+		<h3>There are no blogs yet. :(</h3>
 	<%
 	} else {
 	%>
-		<h3>All messages in Blog '${fn:escapeXml(guestbookName)}'.</h3>
+		<h3>Blog(s)</h3>
 	<%
 		for (Greeting greeting : greetings) {
 			pageContext.setAttribute("greeting_content", greeting.content);
@@ -55,14 +55,17 @@
 	        	  author += " (You)";
 	          }
 	       	}
+	  		String date = greeting.formatDate();
 	  		pageContext.setAttribute("greeting_user", author);
-	  		pageContext.setAttribute("greeting_date", greeting.date);
+	  		pageContext.setAttribute("greeting_date", date);
+	  		pageContext.setAttribute("greeting_title", greeting.title);
 	%>
-			<p>
+			<div style="background-color: #033863; padding: 10px 20px 10px 20px">
 				<b>${fn:escapeXml(greeting_date)}</b><br/>
-				<b>${fn:escapeXml(greeting_user)}</b> wrote:
+				<h3>${fn:escapeXml(greeting_title)}</h3>
+				by <b>${fn:escapeXml(greeting_user)}</b>
 	   			<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
-	   		</p>
+	   		</div>
 	   		<br/>
 	<%
 	   	}

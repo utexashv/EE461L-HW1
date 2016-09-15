@@ -9,6 +9,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
+	<style>
+		textarea{
+		background-color:#000066;
+		color:#66ccff;
+		}
+	</style>
 	<head>
 		<title>Blog - creation</title>
 		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
@@ -24,10 +30,13 @@
 	    UserService userService = UserServiceFactory.getUserService();
 	    User user = userService.getCurrentUser();  
 		%>	
-		<p>You can write your own blog here:</p>
+		<h1>Create Your Own Blog</h1>
 		<br/>
 		<form action="/blog" method="post">
-	    	<div><textarea name="content" rows="3" cols="60"></textarea></div>
+			<p>Title for your blog:</p>
+			<div><textarea name="title" rows="1" cols="60"></textarea></div><br/>
+			<p>Write your blog:</p>
+	    	<div><textarea name="content" rows="20" cols="100"></textarea></div><br/>
 	    	<div><input type="submit" value="Post Blog" /></div>
 	      	<input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
 	    </form>
